@@ -11,24 +11,33 @@
         }
     </tr>
     <tr>
-        @{
-            //TODO #2: Complete the View Jobs By Category Table
-        }
+        @*TODO #2: Complete the View Jobs By Category Table*@
+        @*Feel free to remove or modify this element if necessary. *@
 
-            @* Feel free to remove or modify this element if necessary. *@
+        <td>
+            <ul>
+                @foreach (var job in ViewBag.jobs)
+                {
+                    <li>
+                        <a asp-controller="List" asp-action="Jobs" asp-route-column="@job.Key" asp-route-value="@job">@job.Name</a>
+                    </li>
+                }
+            </ul>
+        </td>
+        
 
-        @foreach (var category in ViewBag.tableChoices)
-        {
-            <td>
-                <ul>
-                    @foreach (var item in category.Value)
-                    {
-                        <li>
-                            <a asp-controller="List" asp-action="Jobs" asp-route-column="@category.Key" asp-route-value="@item">@item</a>
-                        </li>
-                    }
-                </ul>
-            </td>
-        }
-    </tr>
+                @foreach (var category in ViewBag.tableChoices)
+                {
+                    <td>
+                        <ul>
+                            @foreach (var item in category.Value)
+                            {
+                                <li>
+                                    <a asp-controller="List" asp-action="Jobs" asp-route-column="@category.Key" asp-route-value="@item">@item</a>
+                                </li>
+                            }
+                        </ul>
+                    </td>
+                }
+            </tr>
         </table>
